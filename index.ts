@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
   res.redirect("https://gart.sh/jpxs");
 });
 
+app.get("/world", (req, res) => {
+  res.sendFile(path.resolve("./assets/world.html"));
+});
+
 app.get("/world/credits", (req, res) => {
   res.sendFile(path.resolve("./assets/credits.html"));
 });

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JPXS://world</title>
+  </head>
+  <body>
+    <div class="center">
+      <h1 id="countdown"></h1>
+    </div>
+  </body>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap");
+
+    * {
+      --accent-color: #ff6600;
+    }
+
+    h1,
+    h2,
+    h3,
+    a {
+      font-family: "Poppins", sans-serif;
+      font-weight: 900;
+      color: var(--accent-color);
+    }
+
+    h1 {
+      font-size: 6rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p,
+    ul {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      color: #fff;
+      font-size: 1.5rem;
+
+      list-style-type: none;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+
+      margin: 2rem;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+
+  <script>
+    const countdown = document.getElementById("countdown");
+
+    // Set Launch Date (ms)
+    const launchDate = 1686326400000;
+
+    // Update every ms
+    const intvl = setInterval(update, 1);
+
+    function update() {
+      // Get current date and time (ms)
+      const now = new Date().getTime();
+
+      // Get distance from now to the launch date
+      const distance = launchDate - now;
+
+      // Time calculations
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display result
+      countdown.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+
+      // If launch date is reached
+      if (distance < 0) {
+        // Stop countdown
+        clearInterval(intvl);
+        // Style and output text
+        countdown.style.color = "#00ff00";
+        countdown.innerHTML = "We're up! Hop on!";
+      }
+    }
+  </script>
+</html>
