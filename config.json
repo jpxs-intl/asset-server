@@ -1,3 +1,4 @@
 {
-    "rootDir": "/var/lib/pterodactyl/volumes/280c95a3-446b-40cd-bc86-06470ce12869/shared/"
+    "rootDir": "/var/lib/pterodactyl/volumes/280c95a3-446b-40cd-bc86-06470ce12869/shared/",
+    "port": "3000"
 }

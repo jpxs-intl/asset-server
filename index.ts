@@ -13,6 +13,21 @@ app.get("/", (req, res) => {
   res.redirect("https://gart.sh/jpxs");
 });
 
+app.get("/world/credits", (req, res) => {
+  res.sendFile(path.resolve("./assets/credits.html"));
+});
+
+app.get("/world/signs/:file", (req, res) => {
+  if (!fs.existsSync(path.resolve("./assets/signs", `${req.params.file}.png`))) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.sendFile(path.resolve("./assets/signs", `${req.params.file}.png`));
+
+});
+// assets
+
 app.get("/:folder/:file", (req, res) => {
   const { folder, file } = req.params;
 
